@@ -6,7 +6,11 @@
 
 ## Package Dependencies
 
-## Dataset
+## KNN
+
+## K-Means
+
+### Dataset
 
 Some song's names are the same while their ID in the dataset is different,
 so there are some situations in which it will recommend multi-song where information is the same.
