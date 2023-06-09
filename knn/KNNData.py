@@ -1,11 +1,11 @@
-from Recommender import Recommender
-from scipy.sparse import csr_matrix
 import pandas as pd
+from scipy.sparse import csr_matrix
+from fuzzywuzzy import fuzz
 
 class KNNData:
     def __init__(self):
         # initialize variables list
-        ## first be assignd in readfile function
+        ## will be use in readfile function
         self.dataset = "https://drive.google.com/uc?id=11IBLzjtTwvL9kbywjgugsjpFASDvU3Ox&confirm=t&uuid=f6de33d0-0a77-4367-bb5b-e33cdf39b06c&at=AKKF8vxw2T6yJn2isQjBlML7moea:1684571748628"
         self.songs = pd.DataFrame()
         
@@ -19,8 +19,8 @@ class KNNData:
         
         ## first be assigned in decode
         self.decode_id = None
-        self.decode_song = None
-        self.decode_artist = None
+        self.decode_song = dict()
+        self.decode_artist = dict()
         return
     
     def _read_file(self):
@@ -56,3 +56,30 @@ class KNNData:
             self.decode_song[i] = song_id[i]
             self.decode_artist[i] = artist[i]
         return
+    
+    def fuzzy_matching(self, song):
+        match_tuple = list()
+        
+        # get match
+        for title, item in self.decode_id.items():
+            ratio = fuzz.ratio(title.lower(), song.lower())
+            if ratio >= 60:
+                match_tuple.append((title, item, ratio))
+
+        # sort
+        match_tuple = sorted(match_tuple, key=lambda x: x[2])[::-1]
+        if not match_tuple:
+            raise
+        return match_tuple[0][1]
+    
+    def get_matrix_songs_features(self):
+        return self.matrix_songs_features
+    
+    def get_decode_id(self):
+        return self.decode_id
+    
+    def get_decode_song(self):
+        return self.decode_song
+    
+    def get_decode_artist(self):
+        return self.decode_artist
