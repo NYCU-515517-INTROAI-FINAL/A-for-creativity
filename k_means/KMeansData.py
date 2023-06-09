@@ -28,8 +28,11 @@ class KMeansData:
         self.song_cluster_labels = self.song_cluster_pipeline.predict(X)
         return
     
-    def get_X(self):
-        return self.X
-    
     def get_song_cluster_labels(self):
         return self.song_cluster_labels
+    
+    def get_song_cluster_pipeline(self):
+        return self.song_cluster_pipeline
+    
+    def get_dataset(self):
+        return self.dataset

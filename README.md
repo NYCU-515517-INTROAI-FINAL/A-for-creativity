@@ -6,6 +6,16 @@
 
 ## Package Dependencies
 
+## Dataset
+
+Some song's names are the same while their ID in the dataset is different,
+so there are some situations in which it will recommend multi-song where information is the same.
+
+## Input Songs
+
+You can modify the `input_songs.csv` file.
+The program will base on this file to make recommendations.
+
 ## Spotify API
 
 > We use the API to find the song which is not in our dataset.
