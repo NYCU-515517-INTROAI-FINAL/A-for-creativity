@@ -33,7 +33,7 @@ class KMeansData:
     def visualize_dataset_clusters(self):
         # Visualizing the Clusters with PCA
         pca_pipeline = Pipeline([("scaler", StandardScaler()), ("PCA", PCA(n_components=2))])
-        song_embedding = pca_pipeline.fit_transform(X)
+        song_embedding = pca_pipeline.fit_transform(self.X)
         projection = pd.DataFrame(columns=["x", "y"], data=song_embedding)
         projection["title"] = self.dataset["name"]
         projection["cluster"] = self.dataset["cluster_label"]
