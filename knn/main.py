@@ -6,7 +6,7 @@ def main():
     knn_data = KNNData()
     
     print("Reading dataset")
-    knn_data._read_file()
+    knn_data._read_dataset()
     
     print("Setting up variables and data")
     knn_data._setup()
@@ -15,17 +15,17 @@ def main():
     knn_data._decode()
     
     k = int(input("Enter a number K for KNN algorithm: "))
-    print("Making recommender")
+    print("Making recommender\n")
     recommender = Recommender(metric='cosine', algorithm='brute', k=k, data=knn_data.get_matrix_songs_features())
     
     try:
         # detect if fuzzy wuzzy cannot find the song input by user
         song_id, n_recommendations = prompt(knn_data=knn_data)
     except:
-        print("Program is going to terminate")
+        print("\nProgram is going to terminate")
         return
     
-    print(f"Starting the recommendation process...")
+    print(f"\nStarting the recommendation process...")
     song_name, song_artist, recommendations = make_recommendations(song_id=song_id, n_recommendations=n_recommendations, knn_data=knn_data, recommender=recommender)
     print_recommendations(song_name=song_name, song_artist=song_artist, recommendations=recommendations)
     return

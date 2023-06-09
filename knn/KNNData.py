@@ -23,7 +23,7 @@ class KNNData:
         self.decode_artist = dict()
         return
     
-    def _read_file(self):
+    def _read_dataset(self):
         self.songs = pd.read_csv(self.dataset)
         self.songs.drop("song", inplace=True, axis=1)
         return
