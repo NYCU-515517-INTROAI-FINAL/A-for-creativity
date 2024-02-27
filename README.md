@@ -2,13 +2,10 @@
 
 ## Environment
 
----
-
-- Python 3.11.3
+Python 3.11.3
 
 ## Package Dependencies
 
----
 
 - [pandas 2.0.1](https://pypi.org/project/pandas/2.0.1/)
 - [numpy 1.24.2](https://pypi.org/project/numpy/1.24.2/)
@@ -22,26 +19,30 @@
 
 ## KNN
 
----
+- Rely on the **_historical preference of users and other users' preference on a set of songs._**
+- Discover the similarities on the user’s past behavior.
+- Make predictions based on a similar preference with other users.
+- A **non-parametric, unsupervised learning classifier.** 
 
 ## K-Means
 
----
+- Assume that **_if a user has enjoyed certain songs in the past, they are likely to enjoy other songs that have similar features._**
+- Produce recommendations based on its characteristics, such as its **genres, acousticness, danceability, tempo**, and etc.
+- Doesn’t rely on data about other users' listening habits.Assume that if a user has enjoyed certain songs in the past, they are likely to enjoy other songs that have similar features.
+- An **iterative, non-parametric and unsupervised learning method.**
 
 ### Dataset
 
-Some song's names are the same while their ID in the dataset is different,
-so there are some situations in which it will recommend multi-song where information is the same.
+Some songs share the same title while their ID in the dataset is different, so there are some situations in which the system will recommend multiple songs with the same title.
 
 ## Input Songs
 
-You can modify the `input_songs.csv` file.
-The program will base on this file to make recommendations.
+To make this system customizable, you can modify the `input_songs.csv` file. The program will make recommendations base on this file.
 
 ## Spotify API
 
 > We use the API to find the song which is not in our dataset.
 > The recommender is build with K-Means algorithm.
 
-The `.env` file need to be create by yourself.
+The `.env` file need to be created by yourself.
 You can copy the `.env.example` file and modify the content.
